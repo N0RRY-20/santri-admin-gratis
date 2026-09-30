@@ -1,0 +1,9 @@
+{
+  "name": "santri-admin-gratis-hello",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hello-world deploy Cloudflare Pages + Functions + Neon (stack Rp0)",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.0"
+  }
+}

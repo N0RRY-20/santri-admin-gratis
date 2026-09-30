@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Santri Admin Gratis — Hello World</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 4rem auto; padding: 0 1rem; }
+    .ok { color: green; } .fail { color: red; }
+    code { background: #f0f0f0; padding: 0.1em 0.4em; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Santri Admin Gratis — Hello World</h1>
+  <p>Stack Rp0: Cloudflare Pages + Functions + Neon Postgres + R2.</p>
+  <p>Status API: <span id="health">mengecek…</span></p>
+  <p>Lihat langkah deploy di <code>DEPLOY.md</code>.</p>
+  <script>
+    fetch('/api/health')
+      .then(r => r.json())
+      .then(d => {
+        const el = document.getElementById('health');
+        el.textContent = d.status + (d.db_time ? ' — db_time: ' + d.db_time : '');
+        el.className = d.status === 'ok' ? 'ok' : 'fail';
+      })
+      .catch(e => {
+        const el = document.getElementById('health');
+        el.textContent = 'error: ' + e.message;
+        el.className = 'fail';
+      });
+  </script>
+</body>
+</html>
